@@ -1,12 +1,16 @@
-from flask import Flask, render_template
+from flask import Flask, render_template , request, jsonify
+import requests
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=["POST", "GET"])
 def start():
-    return "The MBSA Server is Running"
+    if request.method == "POST":
+        r = requests.get('https://whoer.net/en/main/api/ip') 
+        return jsonify({"ip":r.json() , "request_body": request.json})
+    else:
+        return "<h1> sab sahi hai :) </h1>"
 
 @app.route("/mbsa")
 def mbsa():
     return render_template('index.html')
-
