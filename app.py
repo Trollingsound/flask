@@ -7,8 +7,9 @@ import os
 app = Flask(__name__)
 
 # Load sensitive keys from environment variables
-pk = os.getenv('STRIPE_PUBLIC_KEY')
-sk = os.getenv('STRIPE_SECRET_KEY')
+pk = 'pk_live_51HfBwmD4mk8ECiEaK52fL9vngrRWrLNtA0N2LEC9OGWMd15vtAyz2fFeKMXXWT61L5JlAZs5tePyOefl6YrXvXtc00WGdR32ky'
+sk = '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'
+
 
 @app.route("/", methods=["POST", "GET"])
 def start():
